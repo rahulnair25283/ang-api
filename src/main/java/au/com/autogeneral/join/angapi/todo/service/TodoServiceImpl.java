@@ -1,6 +1,7 @@
 package au.com.autogeneral.join.angapi.todo.service;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
@@ -14,12 +15,12 @@ public class TodoServiceImpl extends TodoService {
 
     @Override
     public TodoItem create(TodoItemAddRequest body) throws NotFoundException {
-        return null;
+        return new TodoItem(BigDecimal.ONE, "hello", false, new Date().toString());
     }
 
     @Override
     public TodoItem get(BigDecimal id) throws NotFoundException {
-        return null;
+        return new TodoItem(BigDecimal.ONE, "hello", false, new Date().toString());
     }
 
     @Override
