@@ -4,14 +4,18 @@ import javax.validation.constraints.Size;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
 
 /**
  * ToDoItemUpdateRequest
  */
 @Value
+@NonFinal
 @FieldDefaults(makeFinal = false)
+@NoArgsConstructor
 @AllArgsConstructor
 public class TodoItemUpdateRequest {
     @ApiModelProperty(example = "Uulwi ifis halahs gag erh'ongg w'ssh.", value = "")
