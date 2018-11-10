@@ -31,7 +31,7 @@ public class TodoServiceImpl extends TodoService {
             return TodoItemMapper.fromDomain(todoItem);
 
         } catch (NoSuchElementException e) {
-            throw new NotFoundException(1, e.getMessage());
+            throw new NotFoundException(e.getMessage());
         }
     }
 
