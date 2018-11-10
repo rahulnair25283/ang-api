@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import au.com.autogeneral.join.angapi.exception.NotFoundException;
 import au.com.autogeneral.join.angapi.tasks.model.BalanceTestResult;
 import au.com.autogeneral.join.angapi.tasks.service.TasksService;
-import au.com.autogeneral.join.angapi.todo.error.TodoItemValidationError;
+import au.com.autogeneral.join.angapi.todo.transfer.TodoItemValidationError;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

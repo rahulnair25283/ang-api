@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import au.com.autogeneral.join.angapi.exception.NotFoundException;
-import au.com.autogeneral.join.angapi.todo.error.TodoItemNotFoundError;
-import au.com.autogeneral.join.angapi.todo.error.TodoItemValidationError;
 import au.com.autogeneral.join.angapi.todo.service.TodoService;
 import au.com.autogeneral.join.angapi.todo.transfer.TodoItem;
 import au.com.autogeneral.join.angapi.todo.transfer.TodoItemAddRequest;
+import au.com.autogeneral.join.angapi.todo.transfer.TodoItemNotFoundError;
 import au.com.autogeneral.join.angapi.todo.transfer.TodoItemUpdateRequest;
+import au.com.autogeneral.join.angapi.todo.transfer.TodoItemValidationError;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

@@ -13,16 +13,23 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.google.common.collect.Lists;
 
-import au.com.autogeneral.join.angapi.todo.error.TodoItemNotFoundError;
-import au.com.autogeneral.join.angapi.todo.error.TodoItemNotFoundErrorDetails;
-import au.com.autogeneral.join.angapi.todo.error.TodoItemValidationError;
-import au.com.autogeneral.join.angapi.todo.error.TodoItemValidationErrorDetails;
+import au.com.autogeneral.join.angapi.exception.NotFoundException;
+import au.com.autogeneral.join.angapi.todo.transfer.TodoItemNotFoundError;
+import au.com.autogeneral.join.angapi.todo.transfer.TodoItemNotFoundErrorDetails;
+import au.com.autogeneral.join.angapi.todo.transfer.TodoItemValidationError;
+import au.com.autogeneral.join.angapi.todo.transfer.TodoItemValidationErrorDetails;
 
+/**
+ * Centralized exception handler that extends {@link ResponseEntityExceptionHandler}.
+ * 
+ * @author rahulnair
+ *
+ */
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @ControllerAdvice
 public class TodoResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(NotFoundException.class)
     public final ResponseEntity<Object> handleTodoNotFoundException(Exception ex,
             WebRequest request) {
 

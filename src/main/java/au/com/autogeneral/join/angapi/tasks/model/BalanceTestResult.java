@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package au.com.autogeneral.join.angapi.tasks.model;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -18,17 +17,15 @@ import lombok.AllArgsConstructor;
 import lombok.Value;
 import lombok.experimental.FieldDefaults;
 
-/**
- * BalanceTestResult
- */
 @Value
 @FieldDefaults(makeFinal = false)
 @AllArgsConstructor
-public class BalanceTestResult   {
+public class BalanceTestResult {
+    
     @ApiModelProperty(example = "[(]", value = "")
-  private String input = null;
+    private String input = null;
 
     @ApiModelProperty(example = "false", value = "")
-  private Boolean isBalanced = null;
+    private Boolean isBalanced = null;
 
 }

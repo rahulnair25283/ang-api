@@ -1,4 +1,4 @@
-package au.com.autogeneral.join.angapi.todo.error;
+package au.com.autogeneral.join.angapi.todo.transfer;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
