@@ -15,6 +15,8 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(makeFinal = false)
 @AllArgsConstructor
 public class TodoItemNotFoundError {
+    
+    public static final String ERROR_NAME = "NotFoundError";
 
     @ApiModelProperty(value = "")
     private List<TodoItemNotFoundErrorDetails> details = null;

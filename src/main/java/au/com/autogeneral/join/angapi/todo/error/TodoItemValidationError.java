@@ -15,6 +15,9 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(makeFinal = false)
 @AllArgsConstructor
 public class TodoItemValidationError {
+
+    public static final String ERROR_NAME = "ValidationError";
+
     @ApiModelProperty(value = "")
     private List<TodoItemValidationErrorDetails> details = null;
 
