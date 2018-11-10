@@ -5,9 +5,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import au.com.autogeneral.join.angapi.exception.NotFoundException;
 import au.com.autogeneral.join.angapi.tasks.model.BalanceTestResult;
 import au.com.autogeneral.join.angapi.tasks.service.TasksService;
 import au.com.autogeneral.join.angapi.todo.transfer.TodoItemValidationError;
@@ -30,9 +30,9 @@ public class TasksController {
     @ApiResponses(value = {
             @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = BalanceTestResult.class),
             @io.swagger.annotations.ApiResponse(code = 400, message = "Validation error", response = TodoItemValidationError.class) })
-    public BalanceTestResult tasksValidateBracketsGet(
-            @ApiParam(value = "Input string (max length 100)", required = true) @RequestParam("input") String input)
-            throws NotFoundException {
+    @ResponseBody
+    public BalanceTestResult validateBrackets(
+            @ApiParam(value = "Input string (max length 100)", required = true) @RequestParam("input") String input) {
         return tasksService.validateBrackets(input);
     }
 }
