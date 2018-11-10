@@ -3,7 +3,6 @@ package au.com.autogeneral.join.angapi.todo;
 import java.math.BigDecimal;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -69,8 +68,8 @@ public class TodoController {
             @io.swagger.annotations.ApiResponse(code = 404, message = "Not Found Error", response = TodoItemNotFoundError.class) })
     public TodoItem todoIdPatch(
             @ApiParam(value = "id", required = true) @PathVariable("id") BigDecimal id,
-            @ApiParam(value = "", required = true) RequestEntity<TodoItemUpdateRequest> requestEntity)
+            @ApiParam(value = "", required = true) @Valid @RequestBody TodoItemUpdateRequest body)
             throws NotFoundException {
-        return todoService.update(id, requestEntity.getBody());
+        return todoService.update(id, body);
     }
 }
