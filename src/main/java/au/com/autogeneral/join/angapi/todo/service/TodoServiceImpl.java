@@ -38,13 +38,16 @@ public class TodoServiceImpl extends TodoService {
     @Override
     public au.com.autogeneral.join.angapi.todo.transfer.TodoItem update(BigDecimal id,
             TodoItemUpdateRequest body) throws NotFoundException {
-        TodoItem todoItem = todoItemRepo.findById(id).get();
+        try {
+            TodoItem todoItem = todoItemRepo.findById(id).get();
 
-        todoItem.setText(body.getText());
-        todoItem.setIsCompleted(body.getIsCompleted());
+            todoItem.setText(body.getText());
+            todoItem.setIsCompleted(body.getIsCompleted());
 
-        todoItem = todoItemRepo.save(todoItem);
-        return TodoItemMapper.fromDomain(todoItem);
+            todoItem = todoItemRepo.save(todoItem);
+            return TodoItemMapper.fromDomain(todoItem);
+        } catch (NoSuchElementException e) {
+            throw new NotFoundException(e.getMessage());
+        }
     }
-
 }

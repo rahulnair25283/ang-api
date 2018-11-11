@@ -1,5 +1,7 @@
 package au.com.autogeneral.join.angapi.controlleradvice;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
@@ -34,10 +36,21 @@ public class TodoResponseEntityExceptionHandler extends ResponseEntityExceptionH
             WebRequest request) {
 
         TodoItemNotFoundError error = new TodoItemNotFoundError(
-                Lists.newArrayList(new TodoItemNotFoundErrorDetails("Item not found.")),
+                Lists.newArrayList(new TodoItemNotFoundErrorDetails("Item not found")),
                 TodoItemNotFoundError.ERROR_NAME);
 
         return new ResponseEntity<Object>(error, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<Object> handleConstraintViolationException(
+            ConstraintViolationException e) {
+        TodoItemValidationError error = new TodoItemValidationError(
+                Lists.newArrayList(new TodoItemValidationErrorDetails("params", "text",
+                        "Must be between 1 and 100 chars long", "")),
+                TodoItemValidationError.ERROR_NAME);
+
+        return new ResponseEntity<Object>(error, HttpStatus.BAD_REQUEST);
     }
 
     @Override

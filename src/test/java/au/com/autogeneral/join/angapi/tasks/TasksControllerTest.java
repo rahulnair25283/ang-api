@@ -1,7 +1,9 @@
 package au.com.autogeneral.join.angapi.tasks;
 
+import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
@@ -28,13 +30,28 @@ public class TasksControllerTest {
     @Test
     public void shouldValidateBrackets() throws Exception {
 
-        String expression = "{[()]}";
+        String expression = "([()])";
 
         BalanceTestResult result = new BalanceTestResult(expression, true);
         given(tasksService.validateBrackets(expression)).willReturn(result);
 
-        mockMvc.perform(get("/tasks/validateBrackets?input=rahul"))
-                .andExpect(status().isOk());
+        mockMvc.perform(get("/tasks/validateBrackets?input=" + expression))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.input", is(expression)))
+                .andExpect(jsonPath("$.isBalanced", is(true)));
+    }
+
+    @Test
+    public void shouldThrow400ErrorIfExpressionisGreaterThan100Characters() throws Exception {
+
+        String expression = "(())()(()()() [[][[)]][[[][][]()[[[[[[[[]][[[[[]][[[[()()()()()()()()()()[[[]]][[[[]]]]]]]]][[[[[[[[[[][][][][]";
+
+        mockMvc.perform(get("/tasks/validateBrackets?input=" + expression))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.name", is("ValidationError")))
+                .andExpect(jsonPath("$.details[0].location", is("params")))
+                .andExpect(jsonPath("$.details[0].param", is("text")))
+                .andExpect(jsonPath("$.details[0].msg", is("Must be between 1 and 100 chars long")))
+                .andExpect(jsonPath("$.details[0].value", is("")));
     }
 
 }

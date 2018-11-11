@@ -1,7 +1,10 @@
 package au.com.autogeneral.join.angapi.tasks;
 
+import javax.validation.constraints.Size;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +20,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
+@Validated
 @RequestMapping("/tasks")
 @Api(value = "tasks", description = "General algorithmic tasks")
 public class TasksController {
@@ -32,7 +36,7 @@ public class TasksController {
             @io.swagger.annotations.ApiResponse(code = 400, message = "Validation error", response = TodoItemValidationError.class) })
     @ResponseBody
     public BalanceTestResult validateBrackets(
-            @ApiParam(value = "Input string (max length 100)", required = true) @RequestParam("input") String input) {
+            @ApiParam(value = "Input string (max length 100)", required = true) @RequestParam("input") @Size(min = 1, max = 100) String input) {
         return tasksService.validateBrackets(input);
     }
 }
