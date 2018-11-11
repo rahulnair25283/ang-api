@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "adde95d2-b103-4a3c-9419-00d0577e36a7",
+		"name": "ang-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create a todo item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"Buy milk\"\n}"
+				},
+				"url": {
+					"raw": "https://ang-api.herokuapp.com/todo",
+					"protocol": "https",
+					"host": [
+						"ang-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a todo item",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://ang-api.herokuapp.com/todo/1",
+					"protocol": "https",
+					"host": [
+						"ang-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"todo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify a todo item",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"Buy milk\",\n  \"isCompleted\": true\n}"
+				},
+				"url": {
+					"raw": "https://ang-api.herokuapp.com/todo/1",
+					"protocol": "https",
+					"host": [
+						"ang-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"todo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate balanced parenthesis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://ang-api.herokuapp.com/tasks/validateBrackets?input={{{{{{{{}}}}}}}",
+					"protocol": "https",
+					"host": [
+						"ang-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"tasks",
+						"validateBrackets"
+					],
+					"query": [
+						{
+							"key": "input",
+							"value": "{{{{{{{{}}}}}}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

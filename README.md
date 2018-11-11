@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # ang-api
 An API for managing a todo list and algorithmic tasks
 
@@ -21,3 +22,9 @@ https://ang-api.herokuapp.com/
 - Maven 3
 
 On the command line, run `mvn spring-boot:run`
+=======
+# todo-api
+An API for managing a todo list
+
+## Built with Spring Boot. Uses Hibernate as the ORM and H2 as the database.
+>>>>>>> Stashed changes
